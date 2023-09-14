@@ -33,16 +33,16 @@ class CardService(
         cardRepository.deleteById(id)
     }
 
-    fun addCard(cardDto: CardDto): Long {
-        logger.info("entity ${cardMapper.toCardModel(cardMapper.toCardEntity(cardDto))}")
-//        return 1
-val cardAttrib = cardDto.attributes
-        val id = cardRepository.save(cardMapper.toCardEntity(cardDto)).id
-        logger.info("id is $id")
-        cardAttrib?.forEach { cardAttribute -> cardAttribute.cardId = id }
-        logger.info("cardAttrib $cardAttrib")
-        val attributes = cardMapper.toCardAttributesEntity(cardAttrib)
-        cardAttributeRepository.saveAll(attributes)
-        return id
-    }
+//    fun addCard(cardDto: CardDto): Long {
+//        logger.info("entity ${cardMapper.toCardModel(cardMapper.toCardEntity(cardDto))}")
+////        return 1
+//val cardAttrib = cardDto.attributes
+//        val id = cardRepository.save(cardMapper.toCardEntity(cardDto)).id
+//        logger.info("id is $id")
+//        cardAttrib?.forEach { cardAttribute -> cardAttribute.cardId = id }
+//        logger.info("cardAttrib $cardAttrib")
+//        val attributes = cardMapper.toCardAttributesEntity(cardAttrib)
+//        cardAttributeRepository.saveAll(attributes)
+//        return id
+//    }
 }

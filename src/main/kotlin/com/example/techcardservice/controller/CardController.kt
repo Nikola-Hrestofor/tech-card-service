@@ -16,11 +16,11 @@ class CardController(val cardService: CardService) {
         val logger = Logger.getLogger(CardController::class.java.name)
     }
 
-    @PostMapping
-    fun addNewCard(@RequestBody cardDto: CardDto): Long {
-        logger.info("new card $cardDto")
-        return cardService.addCard(cardDto)
-    }
+//    @PostMapping
+//    fun addNewCard(@RequestBody cardDto: CardDto): Long {
+//        logger.info("new card $cardDto")
+//        return cardService.addCard(cardDto)
+//    }
 
     @GetMapping
     fun getCards(

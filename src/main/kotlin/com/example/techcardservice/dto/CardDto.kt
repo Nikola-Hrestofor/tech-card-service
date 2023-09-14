@@ -1,14 +1,8 @@
 package com.example.techcardservice.dto
 
 data class CardDto(
-    val id: Long?,
+    val id: Long,
     val name: String,
-    val attributes: List<CardAttribute>?
+    val components: List<CardRelationComponentDto>
 )
 
-data class CardAttribute(
-    var id: Long?,
-    var cardId: Long?,
-    var key:String,
-    var value: String
-)

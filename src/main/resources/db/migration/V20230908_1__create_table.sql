@@ -12,17 +12,19 @@ create table if not exists card_relation_component
     qty             float
 );
 
+create table if not exists category
+(
+    id              serial  primary key,
+    name            varchar unique
+);
+
 create table if not exists component
 (
     id              serial  primary key,
     name            varchar,
     unit            varchar,
-    category_id     serial,
+    category_id     serial REFERENCES category (id),
     code            varchar
 );
 
-create table if not exists category
-(
-    id              serial  primary key,
-    name            varchar
-);
+create unique index uniq_comp_ind on component(name, code)
