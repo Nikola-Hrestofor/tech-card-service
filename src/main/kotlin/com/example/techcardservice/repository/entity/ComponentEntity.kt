@@ -20,8 +20,16 @@ class ComponentEntity(
     @ManyToOne
     @JoinColumn(name = "category_id")
     var category: CategoryEntity = CategoryEntity(),
-    var code: String = ""
-){
+    var code: String = "",
+
+    @OneToMany(
+        mappedBy = "component",
+        fetch = FetchType.LAZY,
+        orphanRemoval = true,
+        cascade = [CascadeType.ALL]
+    )
+    var relation: MutableList<CardRelationComponentEntity> = mutableListOf()
+) {
     override fun toString(): String {
         return "ComponentEntity(id=$id, name='$name', unit='$unit', category=$category, code='$code')"
     }

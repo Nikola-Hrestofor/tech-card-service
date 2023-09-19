@@ -34,7 +34,7 @@ class DirectoryController(val categoryService: CategoryService,
     }
 
     @GetMapping("/component")
-    fun getComponent(@RequestParam(name = "code") code: String?, categoryId: Long?, pageable: Pageable): Page<ComponentDto> {
+    fun getComponent(code: String?, categoryId: Long?, pageable: Pageable): Page<ComponentDto> {
         logger.info("code $code, category $categoryId")
         return componentService.getComponent(code, categoryId, pageable)
     }

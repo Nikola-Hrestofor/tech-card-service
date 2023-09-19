@@ -1,11 +1,9 @@
 package com.example.techcardservice.repository.mapper
 
-//import com.example.techcardservice.dto.CardAttribute
 import com.example.techcardservice.dto.CardDto
 import com.example.techcardservice.dto.CategoryDto
 import com.example.techcardservice.dto.ComponentDto
 import com.example.techcardservice.repository.entity.CardEntity
-import com.example.techcardservice.repository.entity.CardFillingEntity
 import com.example.techcardservice.repository.entity.CategoryEntity
 import com.example.techcardservice.repository.entity.ComponentEntity
 import org.mapstruct.Mapper
@@ -22,7 +20,6 @@ interface CardMapper{
 
     fun toComponentModel(entities: ComponentEntity) : ComponentDto
 
-//    @Mapping(source = "name", target = "name")
     fun toComponentEntity(componentDto: ComponentDto): ComponentEntity
 
     fun toCategoriesModels(entities: List<CategoryEntity>) : List<CategoryDto>
@@ -31,5 +28,4 @@ interface CardMapper{
     fun toCategoryModel(entities: CategoryEntity?) : CategoryDto?
     fun toCategoryEntity(categoryDto: CategoryDto): CategoryEntity
 
-//    fun toCardAttributesEntity(models: List<CardAttribute>?): List<CardFillingEntity>
 }

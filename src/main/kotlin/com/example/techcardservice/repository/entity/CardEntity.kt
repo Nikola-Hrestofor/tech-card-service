@@ -12,29 +12,18 @@ class CardEntity(
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
-    var id: Long = 0,
+    var id: Long? = 0,
 
     @Column(name = "name")
     var name: String = "",
 
-    @OneToMany
-    @JoinColumn(name="card_id")
-    var attributes: List<CardFillingEntity> = listOf()
+    @OneToMany(
+        mappedBy = "card",
+        fetch = FetchType.LAZY,
+        orphanRemoval = true,
+        cascade = [CascadeType.ALL]
+    )
+    var components: List<CardRelationComponentEntity> = mutableListOf()
 
 )
 
-@Entity
-@NoArgsConstructor
-@AllArgsConstructor
-@Table(name = "card_filling")
-class CardFillingEntity(
-    @Id
-    @Column(name = "id")
-    var id: Long = 0,
-    @Column(name = "card_id")
-    var cardId: Long = 0,
-    @Column(name = "key")
-    var key: String = "",
-    @Column(name = "value")
-    var value: String = ""
-)

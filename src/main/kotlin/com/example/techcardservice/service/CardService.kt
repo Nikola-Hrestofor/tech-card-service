@@ -1,7 +1,6 @@
 package com.example.techcardservice.service
 
 import com.example.techcardservice.dto.CardDto
-import com.example.techcardservice.repository.CardAttributeRepository
 import com.example.techcardservice.repository.CardRepository
 import com.example.techcardservice.repository.mapper.CardMapper
 import org.springframework.data.domain.Page
@@ -12,7 +11,6 @@ import java.util.logging.Logger
 @Service
 class CardService(
     val cardRepository: CardRepository,
-    val cardAttributeRepository: CardAttributeRepository,
     val cardMapper: CardMapper
 ) {
     companion object {
