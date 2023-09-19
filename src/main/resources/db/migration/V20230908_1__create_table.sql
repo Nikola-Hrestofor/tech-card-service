@@ -16,6 +16,10 @@ create table if not exists category
 (
     id              serial  primary key,
     name            varchar unique
+--,
+--     created         timestamp,
+--     modified        timestamp
+
 );
 
 create table if not exists component
