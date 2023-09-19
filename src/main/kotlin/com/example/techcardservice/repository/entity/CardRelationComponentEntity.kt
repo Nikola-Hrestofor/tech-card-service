@@ -16,4 +16,8 @@ class CardRelationComponentEntity(
     @JoinColumn(name = "component_id")
     var component: ComponentEntity = ComponentEntity(),
     var qty: BigDecimal = BigDecimal.ZERO
-)
+){
+    override fun toString(): String {
+        return "CardRelationComponentEntity(id=$id, card=$card, component=$component, qty=$qty)"
+    }
+}

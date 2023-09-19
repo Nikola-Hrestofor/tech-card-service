@@ -2,10 +2,12 @@ package com.example.techcardservice.service
 
 import com.example.techcardservice.dto.CardDto
 import com.example.techcardservice.repository.CardRepository
+import com.example.techcardservice.repository.entity.CardEntity
 import com.example.techcardservice.repository.mapper.CardMapper
 import org.springframework.data.domain.Page
 import org.springframework.data.domain.Pageable
 import org.springframework.stereotype.Service
+import org.springframework.transaction.annotation.Transactional
 import java.util.logging.Logger
 
 @Service
@@ -31,16 +33,17 @@ class CardService(
         cardRepository.deleteById(id)
     }
 
-//    fun addCard(cardDto: CardDto): Long {
-//        logger.info("entity ${cardMapper.toCardModel(cardMapper.toCardEntity(cardDto))}")
-////        return 1
-//val cardAttrib = cardDto.attributes
-//        val id = cardRepository.save(cardMapper.toCardEntity(cardDto)).id
-//        logger.info("id is $id")
-//        cardAttrib?.forEach { cardAttribute -> cardAttribute.cardId = id }
-//        logger.info("cardAttrib $cardAttrib")
-//        val attributes = cardMapper.toCardAttributesEntity(cardAttrib)
-//        cardAttributeRepository.saveAll(attributes)
-//        return id
-//    }
+    @Transactional
+    fun addCard(cardDto: CardDto): Long? {
+        val entity = cardMapper.toCardEntity(cardDto)
+
+        logger.info("dto $cardDto; \n" +
+                "|| entity $entity")
+
+        val cardId = cardRepository.save(CardEntity(name = cardDto.name)).id
+        entity.id = cardId
+        entity.components.map { cardRelationComponentEntity -> cardRelationComponentEntity.card.id = cardId }
+        return cardRepository.save(entity).id
+
+    }
 }

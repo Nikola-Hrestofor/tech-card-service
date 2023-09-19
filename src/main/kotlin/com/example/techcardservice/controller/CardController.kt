@@ -16,11 +16,11 @@ class CardController(val cardService: CardService) {
         val logger = Logger.getLogger(CardController::class.java.name)
     }
 
-//    @PostMapping
-//    fun addNewCard(@RequestBody cardDto: CardDto): Long {
-//        logger.info("new card $cardDto")
-//        return cardService.addCard(cardDto)
-//    }
+    @PostMapping
+    fun addNewCard(@RequestBody cardDto: CardDto): Long? {
+        logger.info("new card $cardDto")
+        return cardService.addCard(cardDto)
+    }
 
     @GetMapping
     fun getCards(
@@ -31,11 +31,6 @@ class CardController(val cardService: CardService) {
         val entity = cardService.getList(name, pageable)
         logger.info("entity $entity")
         return entity;
-//        val list = LinkedList<Pair<String, String>>()
-//        list.add(Pair("sasas", "sasa"))
-//        list.add(Pair("reer", "gfv"))
-//        list.add(Pair("dfcx", "cvcv"))
-//        return CardDto(12, "someName", list)
     }
 
     @DeleteMapping

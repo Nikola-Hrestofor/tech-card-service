@@ -11,12 +11,15 @@ import java.util.logging.Logger
 
 @RestController
 @RequestMapping("/api/v1/directory")
-class DirectoryController(val categoryService: CategoryService,
-    val componentService: ComponentService) {
+class DirectoryController(
+    val categoryService: CategoryService,
+    val componentService: ComponentService
+) {
 
     companion object {
         val logger = Logger.getLogger(DirectoryController::class.java.name)
     }
+
     @GetMapping("/category")
     fun getCategory(pageable: Pageable): Page<CategoryDto> {
         return categoryService.getCategory(pageable)
@@ -29,8 +32,8 @@ class DirectoryController(val categoryService: CategoryService,
     }
 
     @DeleteMapping("/category/{id}")
-    fun deleteCategory(@PathVariable id: Long) {
-        categoryService.deleteCategory(id)
+    fun deleteCategory(@PathVariable id: Long): Boolean {
+        return categoryService.deleteCategory(id)
     }
 
     @GetMapping("/component")

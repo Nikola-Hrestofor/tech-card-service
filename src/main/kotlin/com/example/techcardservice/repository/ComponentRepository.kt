@@ -1,8 +1,6 @@
 package com.example.techcardservice.repository
 
-import com.example.techcardservice.repository.entity.CategoryEntity
 import com.example.techcardservice.repository.entity.ComponentEntity
-import org.springframework.boot.autoconfigure.data.web.SpringDataWebProperties
 import org.springframework.data.domain.Page
 import org.springframework.data.jpa.repository.JpaRepository
 import org.springframework.data.repository.PagingAndSortingRepository
@@ -22,5 +20,5 @@ interface ComponentRepository : PagingAndSortingRepository<ComponentEntity, Long
 
     fun getByNameOrCode(name: String, code: String, pageable: Pageable): List<ComponentEntity>
 
-    fun getByCategory(categoryId: Long, pageable: Pageable): List<ComponentEntity>
+    fun getByCategoryId(categoryId: Long): List<ComponentEntity>
 }
