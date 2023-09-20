@@ -25,7 +25,7 @@ class CardEntity(
     )
     var components: List<CardRelationComponentEntity> = mutableListOf()
 
-){
+) {
     override fun toString(): String {
         return "CardEntity(id=$id, name='$name', components=$components)"
     }

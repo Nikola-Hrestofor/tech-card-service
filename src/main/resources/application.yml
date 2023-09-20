@@ -1,21 +1,21 @@
 server:
-    port: 8081
+  port: 8081
 spring:
-    flyway:
-        locations: classpath:/db/migration
-        schemas: formula
+  flyway:
+    locations: classpath:/db/migration
+    schemas: formula
 
-    datasource:
-#        url: jdbc:postgresql://tech-card-service_postgres_1:5432/erp
-        url: jdbc:postgresql://localhost:5432/erp
-        username: postgres
-        password: postgres
+  datasource:
+    #        url: jdbc:postgresql://tech-card-service_postgres_1:5432/erp
+    url: jdbc:postgresql://localhost:5432/erp
+    username: postgres
+    password: postgres
 
-        hikari:
-            minimum-idle: 0
-            initialization-fail-timeout: -1
-            schema: formula
+    hikari:
+      minimum-idle: 0
+      initialization-fail-timeout: -1
+      schema: formula
 
-    jpa:
-        show-sql: true
+  jpa:
+    show-sql: true
 

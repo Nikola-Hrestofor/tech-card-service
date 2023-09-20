@@ -5,7 +5,6 @@ import com.example.techcardservice.service.CardService
 import org.springframework.data.domain.Page
 import org.springframework.data.domain.Pageable
 import org.springframework.web.bind.annotation.*
-import java.util.LinkedList
 import java.util.logging.Logger
 
 @RestController
@@ -34,7 +33,7 @@ class CardController(val cardService: CardService) {
     }
 
     @DeleteMapping
-    fun deleteCard(id: Long){
+    fun deleteCard(id: Long) {
         cardService.deleteCard(id)
     }
 }

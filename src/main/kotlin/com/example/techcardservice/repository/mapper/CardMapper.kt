@@ -10,23 +10,23 @@ import org.mapstruct.Mapper
 import org.mapstruct.Mapping
 
 @Mapper
-interface CardMapper{
+interface CardMapper {
     fun toCardModel(entity: CardEntity): CardDto
     fun toCardModels(entity: List<CardEntity>): List<CardDto>
 
     fun toCardEntity(model: CardDto): CardEntity
 
-    fun toComponentModels(entities: List<ComponentEntity>) : List<ComponentDto>
+    fun toComponentModels(entities: List<ComponentEntity>): List<ComponentDto>
 
     @Mapping(target = "stock", constant = "74")
-    fun toComponentModel(entities: ComponentEntity) : ComponentDto
+    fun toComponentModel(entities: ComponentEntity): ComponentDto
 
     fun toComponentEntity(componentDto: ComponentDto): ComponentEntity
 
-    fun toCategoriesModels(entities: List<CategoryEntity>) : List<CategoryDto>
+    fun toCategoriesModels(entities: List<CategoryEntity>): List<CategoryDto>
 
     @Mapping(target = "qty", expression = "java(entities.getComponents().size())")
-    fun toCategoryModel(entities: CategoryEntity?) : CategoryDto?
+    fun toCategoryModel(entities: CategoryEntity?): CategoryDto?
     fun toCategoryEntity(categoryDto: CategoryDto): CategoryEntity
 
 }

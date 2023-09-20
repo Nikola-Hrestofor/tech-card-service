@@ -9,6 +9,6 @@ import org.springframework.stereotype.Repository
 
 @Repository
 interface CardRepository : PagingAndSortingRepository<CardEntity, Long>, JpaRepository<CardEntity, Long> {
-    fun findAllByName(name:String?, pageable: Pageable): Page<CardEntity>
+    fun findAllByName(name: String?, pageable: Pageable): Page<CardEntity>
 
 }

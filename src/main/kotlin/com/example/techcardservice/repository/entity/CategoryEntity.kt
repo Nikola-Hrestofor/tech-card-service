@@ -10,18 +10,18 @@ import lombok.RequiredArgsConstructor
 @NoArgsConstructor
 @AllArgsConstructor
 @RequiredArgsConstructor
-class CategoryEntity (
+class CategoryEntity(
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     var id: Long? = null,
-    @Column(unique=true)
+    @Column(unique = true)
     var name: String = "",
 
     @OneToMany(
-    mappedBy = "category",
-    fetch = FetchType.LAZY,
-    orphanRemoval = true,
-    cascade = [CascadeType.ALL]
+        mappedBy = "category",
+        fetch = FetchType.LAZY,
+        orphanRemoval = true,
+        cascade = [CascadeType.ALL]
     )
     var components: MutableList<ComponentEntity> = mutableListOf()
 ) {

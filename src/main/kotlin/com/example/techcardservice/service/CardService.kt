@@ -37,8 +37,10 @@ class CardService(
     fun addCard(cardDto: CardDto): Long? {
         val entity = cardMapper.toCardEntity(cardDto)
 
-        logger.info("dto $cardDto; \n" +
-                "|| entity $entity")
+        logger.info(
+            "dto $cardDto; \n" +
+                    "| entity $entity"
+        )
 
         val cardId = cardRepository.save(CardEntity(name = cardDto.name)).id
         entity.id = cardId
