@@ -3,6 +3,7 @@ package com.example.techcardservice.repository.entity
 import jakarta.persistence.*
 import lombok.AllArgsConstructor
 import lombok.NoArgsConstructor
+import java.math.BigDecimal
 
 @Entity
 @Table(name = "component")

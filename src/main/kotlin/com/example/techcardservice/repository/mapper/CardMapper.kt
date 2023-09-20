@@ -18,6 +18,7 @@ interface CardMapper{
 
     fun toComponentModels(entities: List<ComponentEntity>) : List<ComponentDto>
 
+    @Mapping(target = "stock", constant = "74")
     fun toComponentModel(entities: ComponentEntity) : ComponentDto
 
     fun toComponentEntity(componentDto: ComponentDto): ComponentEntity
