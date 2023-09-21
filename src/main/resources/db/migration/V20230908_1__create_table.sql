@@ -1,7 +1,8 @@
 create table if not exists card
 (
     id              serial  primary key,
-    name            varchar UNIQUE NOT NULL
+    name            varchar UNIQUE NOT NULL,
+    code            varchar UNIQUE NOT NULL
 );
 
 create table if not exists card_relation_component

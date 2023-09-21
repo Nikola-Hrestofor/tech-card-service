@@ -17,6 +17,8 @@ class CardEntity(
     @Column(name = "name")
     var name: String = "",
 
+    var code: String = "",
+
     @OneToMany(
         mappedBy = "card",
         fetch = FetchType.LAZY,

@@ -50,10 +50,10 @@ UNION
 SELECT 'Картонная манишка', 'piece',id ,'D0000001'
 from category where name = 'Картон';
 
-INSERT INTO card(name)
-SELECT '01-07-401'
+INSERT INTO card(name, code)
+SELECT '01-07-401', 'cs43'
 UNION
-SELECT '01-61-401';
+SELECT '01-61-401', 'dssg43';
 
 ----------------------model1
 INSERT INTO card_relation_component(card_id, component_id, qty)

@@ -1,8 +1,8 @@
-insert into card (name)
-select 'card1';
+insert into card (name, code)
+select 'card1', 'code1'
 
-insert into card (name)
-select 'card2';
+UNION
+select 'card2', 'code2';
 
 insert into category (name)
 select 'textile';

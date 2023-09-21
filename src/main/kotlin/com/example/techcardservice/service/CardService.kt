@@ -42,7 +42,7 @@ class CardService(
                     "| entity $entity"
         )
 
-        val cardId = cardRepository.save(CardEntity(name = cardDto.name)).id
+        val cardId = cardRepository.save(CardEntity(id = cardDto.id)).id
         entity.id = cardId
         entity.components.map { cardRelationComponentEntity -> cardRelationComponentEntity.card.id = cardId }
         return cardRepository.save(entity).id
