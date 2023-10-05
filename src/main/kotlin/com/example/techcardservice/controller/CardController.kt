@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.*
 import java.util.logging.Logger
 
 @RestController
+@CrossOrigin(origins = ["*"])
 @RequestMapping("/api/v1/cards")
 class CardController(val cardService: CardService) {
 
@@ -28,6 +29,16 @@ class CardController(val cardService: CardService) {
     )
             : Page<CardDto> {
         val entity = cardService.getList(name, pageable)
+        logger.info("entity $entity")
+        return entity;
+    }
+
+    @GetMapping("/{id}")
+    fun getCardsById(
+        @PathVariable id: Long,
+    )
+            : CardDto {
+        val entity = cardService.getById(id)
         logger.info("entity $entity")
         return entity;
     }

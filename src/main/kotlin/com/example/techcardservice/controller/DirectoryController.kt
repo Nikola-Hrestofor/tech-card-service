@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.*
 import java.util.logging.Logger
 
 @RestController
+@CrossOrigin(origins = ["*"])
 @RequestMapping("/api/v1/directory")
 class DirectoryController(
     val categoryService: CategoryService,

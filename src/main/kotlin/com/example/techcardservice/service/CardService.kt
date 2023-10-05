@@ -27,6 +27,11 @@ class CardService(
         return cardRepository.findAllByName(name, pageable).map { cardEntity -> cardMapper.toCardModel(cardEntity) }
     }
 
+    fun getById(id: Long): CardDto {
+
+        return cardMapper.toCardModel(cardRepository.findById(id).orElse(null));
+    }
+
     fun deleteCard(id: Long) {
         logger.info("delete by id $id")
 //        cardRepository.removeById(id)
