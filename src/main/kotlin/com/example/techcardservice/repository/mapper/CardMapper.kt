@@ -11,6 +11,7 @@ import org.mapstruct.Mapping
 
 @Mapper
 interface CardMapper {
+    @Mapping(target = "stock", constant = "14")
     fun toCardModel(entity: CardEntity): CardDto
     fun toCardModels(entity: List<CardEntity>): List<CardDto>
 
