@@ -24,8 +24,8 @@ class CardController(val cardService: CardService) {
 
     @GetMapping
     fun getCards(
-        @RequestParam(required = false, defaultValue = "") name: String?,
-        pageable: Pageable
+            @RequestParam(required = false, defaultValue = "") name: String?,
+            pageable: Pageable
     )
             : Page<CardDto> {
         val entity = cardService.getList(name, pageable)
@@ -35,7 +35,7 @@ class CardController(val cardService: CardService) {
 
     @GetMapping("/{id}")
     fun getCardsById(
-        @PathVariable id: Long,
+            @PathVariable id: Long,
     )
             : CardDto {
         val entity = cardService.getById(id)

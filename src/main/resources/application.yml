@@ -1,6 +1,10 @@
 server:
   port: 8081
+
 spring:
+  services:
+    warehouse:
+      host: localhost:8087
   flyway:
     locations: classpath:/db/migration
     schemas: formula
@@ -19,3 +23,10 @@ spring:
   jpa:
     show-sql: true
 
+feign:
+  client:
+    config:
+      default:
+        connectTimeout: 5000
+        readTimeout: 5000
+        loggerLevel: info
