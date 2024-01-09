@@ -3,6 +3,8 @@ package com.example.techcardservice.service
 import com.example.techcardservice.api.WarehouseService
 import com.example.techcardservice.dto.ComponentDto
 import com.example.techcardservice.repository.ComponentRepository
+import com.example.techcardservice.repository.entity.CategoryEntity
+import com.example.techcardservice.repository.entity.ComponentEntity
 import com.example.techcardservice.repository.mapper.CardMapper
 import com.example.warehouseservice.dto.enums.UnitType
 import org.springframework.data.domain.Page
@@ -24,33 +26,6 @@ class ComponentService(
     }
 
     fun getComponent(code: String?, categoryId: Long?, pageable: Pageable): Page<ComponentDto> {
-//        var list = mutableListOf<ComponentEntity?>()
-//        val page = Page<ComponentEntity>
-//        var byNameOrCode =
-//            if(name != null){
-//            componentRepository.getByNameOrCode(name, name, pageable)
-//
-//        } else{null}
-//        val byCategory =
-//            if (categoryId != null){
-//            componentRepository.getByCategory(categoryId, pageable)
-//        }else{null}
-//
-//
-//            if (byCategory != null) {
-//                list.addAll(byCategory)
-//            }
-//            if (byNameOrCode != null) {
-//                list.addAll(byNameOrCode)
-//            }
-//
-//        if (!list.isEmpty())
-//            return list.map { componentEntity ->  cardMapper.toComponentModel(componentEntity)}
-//
-//
-//        return componentRepository.findAll(pageable).map { componentEntity ->
-//            cardMapper.toComponentModel(componentEntity)
-//        }
         val entity = componentRepository.getComponentsByFilter(code, categoryId, pageable)
         val dto = entity.map { componentEntity ->
             cardMapper.toComponentModel(componentEntity)
@@ -83,6 +58,17 @@ class ComponentService(
 
     fun deleteComponent(id: Long) {
         componentRepository.deleteById(id)
+    }
+
+    fun getComponentById(id: Long): ComponentDto {
+        val entity = componentRepository.findById(id).orElse(null);
+        val dto = cardMapper.toComponentModel(entity)
+
+        logger.info("dto ${dto}")
+        val unit = warehouseService.getUnit(UnitType.COMPONENT, 2)
+        logger.info("unit $unit")
+
+        return dto
     }
 
 

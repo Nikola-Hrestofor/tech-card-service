@@ -43,6 +43,11 @@ class DirectoryController(
         return componentService.getComponent(code, categoryId, pageable)
     }
 
+    @GetMapping("/component/{id}")
+    fun getComponentById(@PathVariable id: Long): ComponentDto {
+        return componentService.getComponentById(id)
+    }
+
     @PostMapping("/component")
     fun addComponent(@RequestBody componentDto: ComponentDto): Long? {
         logger.info("new component dto $componentDto")
