@@ -14,7 +14,16 @@ class CustomerEntity(
     @Column(name = "id")
     var id: Long? = 0,
 
+    @Column(name = "title")
+    var title: String = "",
+
     @Column(name = "name")
     var name: String = "",
+
+    @Column(name = "lastName")
+    var lastName: String = "",
+
+    @Column(name = "phone")
+    var phone: String = "",
 ) {
 }

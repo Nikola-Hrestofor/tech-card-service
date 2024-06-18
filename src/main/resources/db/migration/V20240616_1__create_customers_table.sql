@@ -1,5 +1,8 @@
 create table if not exists customer
 (
     id              serial  primary key,
-    name            varchar
+    title            varchar,
+    name            varchar,
+    lastName            varchar,
+    phone            varchar
 );

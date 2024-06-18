@@ -4,6 +4,9 @@ import java.math.BigDecimal
 
 class CustomerDto(
     val id: Long,
-    val name: String,
+    val title: String,
+    val name: String?,
+    val lastName: String?,
+    val phone: String,
     val balance: BigDecimal?
 )
