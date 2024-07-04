@@ -20,7 +20,7 @@ class CustomerEntity(
     @Column(name = "name")
     var name: String = "",
 
-    @Column(name = "lastName")
+    @Column(name = "lastname")
     var lastName: String = "",
 
     @Column(name = "phone")
