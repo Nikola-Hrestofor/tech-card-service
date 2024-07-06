@@ -8,5 +8,5 @@ class CustomerDto(
     val name: String?,
     val lastName: String?,
     val phone: String,
-    val balance: BigDecimal?
+    var balance: BigDecimal?
 )

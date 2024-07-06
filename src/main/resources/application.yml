@@ -4,7 +4,9 @@ server:
 spring:
   services:
     warehouse:
-      host: localhost:8087
+      host: 158.160.136.142:8087
+    management:
+      host: 158.160.136.142:8086
   flyway:
     locations: classpath:/db/migration
     schemas: formula

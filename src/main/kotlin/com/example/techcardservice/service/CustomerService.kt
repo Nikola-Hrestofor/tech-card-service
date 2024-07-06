@@ -1,5 +1,6 @@
 package com.example.techcardservice.service
 
+import com.example.techcardservice.api.ManagementApiService
 import com.example.techcardservice.dto.CustomerDto
 import com.example.techcardservice.repository.CustomerRepository
 import com.example.techcardservice.repository.mapper.CustomerMapper
@@ -11,18 +12,34 @@ import org.springframework.stereotype.Service
 class CustomerService(
     private val customerRepository: CustomerRepository,
     private val customerMapper: CustomerMapper,
+    private val managementApiService: ManagementApiService
 ) {
     fun getCustomers(showBalance: Boolean, pageable: Pageable): Page<CustomerDto> {
-        return customerRepository.findAll(pageable)
+        val customers = customerRepository.findAll(pageable)
             .map { customerEntity -> customerMapper.toCustomerModel(customerEntity) }
+        if (showBalance) {
+            customers.map { it.balance = managementApiService.getBalanceByCustomer(it.id) }
+        }
+        return customers
     }
 
     fun getCustomersMeta(showBalance: Boolean): List<CustomerDto> {
-        return customerMapper.toCustomerModel(customerRepository.findAll())
+        val customers = customerMapper.toCustomerModel(customerRepository.findAll())
+        if (showBalance) {
+            customers.map { it.balance = managementApiService.getBalanceByCustomer(it.id) }
+        }
+        return customers
     }
 
-    fun getCustomer(id: Long, showBalance: Boolean) : CustomerDto =
-        customerMapper.toCustomerModel(customerRepository.findById(id).orElseThrow())
+    fun getCustomer(id: Long, showBalance: Boolean) : CustomerDto {
+        val customer = customerMapper.toCustomerModel(customerRepository.findById(id).orElseThrow())
+
+        if (showBalance) {
+            customer.balance = managementApiService.getBalanceByCustomer(customer.id)
+        }
+
+        return customer
+    }
 
     fun addCustomer(customerDto: CustomerDto): Long? =
         customerRepository.save(customerMapper.toCustomerEntity(customerDto)).id
